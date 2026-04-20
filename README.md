@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anthony Espinosa | IT Professional Portfolio</title>
@@ -19,7 +19,6 @@
       --gray-light: #f3f4f6;
       --gray-mid: #e5e7eb;
       --border: #d1d5db;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -32,7 +31,6 @@
       line-height: 1.5;
     }
 
-    /* Navigation */
     nav {
       position: fixed; top: 0; width: 100%;
       background: rgba(255, 255, 255, 0.9);
@@ -41,6 +39,7 @@
       z-index: 1000;
       display: flex; justify-content: center; padding: 1.2rem;
     }
+
     .nav-link {
       color: var(--secondary-text); text-decoration: none;
       margin: 0 1rem; font-weight: 500; font-size: 0.9rem;
@@ -48,29 +47,26 @@
     }
     .nav-link:hover, .nav-link.active { color: var(--accent); font-weight: 700; }
 
-    /* Layout Components */
-    main { max-width: 800px; margin: 100px auto 60px; padding: 0 20px; }
+    main { max-width: 800px; margin: 100px auto 60px; padding: 0 20px; min-height: 70vh; }
 
-    .content-section {
-      display: none; animation: fadeIn 0.4s ease-out;
-    }
+    .content-section { display: none; animation: fadeIn 0.4s ease-out; }
     .content-section.active { display: block; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* UI Elements */
-    h1 { font-size: 3rem; font-weight: 700; letter-spacing: -2px; margin-bottom: 0.5rem; }
-    h2 { font-size: 1.5rem; border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 700; letter-spacing: -2px; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 1.5rem; padding-bottom: 5px; }
     p { color: var(--secondary-text); margin-bottom: 1.5rem; font-size: 1.1rem; }
 
-    .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .button-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; }
     
     .btn {
       padding: 12px 24px; border-radius: 6px; font-weight: 600; 
       cursor: pointer; transition: var(--transition); text-decoration: none;
       display: inline-flex; align-items: center; justify-content: center;
+      border: none; font-size: 0.9rem;
     }
-    .btn-primary { background: var(--accent); color: white; border: none; }
+    .btn-primary { background: var(--accent); color: white; }
     .btn-primary:hover { background: #333; transform: translateY(-2px); }
     
     .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
@@ -78,33 +74,32 @@
 
     .btn-download { background: var(--gray-light); color: var(--accent); border: 1px solid var(--border); }
 
-    /* Cards */
-    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-    @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
     
     .card {
       background: var(--gray-light); padding: 20px; border-radius: 8px;
-      border: 1px solid var(--gray-mid);
+      border: 1px solid var(--gray-mid); transition: var(--transition);
     }
+    .card:hover { border-color: var(--accent); }
     .card h3 { margin-bottom: 8px; font-size: 1rem; }
 
-    /* Chatbot Interface */
+    /* Chatbot UI */
     .chatbot-container {
-      position: fixed; bottom: 25px; right: 25px; width: 320px;
+      position: fixed; bottom: 25px; right: 25px; width: 300px;
       background: white; border-radius: 12px; border: 1px solid var(--border);
       box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; z-index: 2000;
     }
-    .chat-header { background: var(--accent); color: white; padding: 12px; font-weight: 600; font-size: 0.8rem; }
-    .chat-box { height: 250px; padding: 15px; overflow-y: auto; background: white; font-size: 0.85rem; }
+    .chat-header { background: var(--accent); color: white; padding: 12px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
+    .chat-box { height: 200px; padding: 15px; overflow-y: auto; background: white; font-size: 0.85rem; display: flex; flex-direction: column; }
     .chat-input-area { display: flex; border-top: 1px solid var(--gray-mid); }
-    #chatInput { flex: 1; padding: 12px; border: none; outline: none; }
-    #sendBtn { padding: 12px; background: white; border: none; cursor: pointer; font-weight: bold; }
+    #chatInput { flex: 1; padding: 12px; border: none; outline: none; font-size: 0.85rem; }
+    #sendBtn { padding: 12px; background: white; border: none; cursor: pointer; font-size: 1rem; }
 
-    .msg { margin-bottom: 10px; border-radius: 4px; padding: 8px; max-width: 85%; }
-    .bot-msg { background: var(--gray-light); color: var(--text); align-self: flex-start; }
-    .user-msg { background: #333; color: white; margin-left: auto; }
+    .msg { margin-bottom: 10px; border-radius: 8px; padding: 10px; max-width: 85%; line-height: 1.4; }
+    .bot-msg { background: var(--gray-light); color: var(--text); align-self: flex-start; border-bottom-left-radius: 2px; }
+    .user-msg { background: var(--accent); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
 
-    footer { text-align: center; padding: 40px; border-top: 1px solid var(--gray-mid); color: var(--secondary-text); font-size: 0.8rem; }
+    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--gray-mid); color: var(--secondary-text); font-size: 0.8rem; }
   </style>
 </head>
 <body>
@@ -113,6 +108,7 @@
     <div class="nav-link active" onclick="showSection('home')">Home</div>
     <div class="nav-link" onclick="showSection('about')">About</div>
     <div class="nav-link" onclick="showSection('skills')">Skills</div>
+    <div class="nav-link" onclick="showSection('projects')">Projects</div>
     <div class="nav-link" onclick="showSection('certificates')">Certificates</div>
     <div class="nav-link" onclick="showSection('contact')">Contact</div>
   </nav>
@@ -120,11 +116,11 @@
   <main>
     <section id="home" class="content-section active">
       <h1>Anthony Espinosa</h1>
-      <p>IT Student & Digital Architect based in the Philippines. I specialize in bridging technical logic with elegant user interfaces.</p>
+      <p>IT Student & Digital Architect based in the Philippines. Bridging technical logic with professional minimalist design.</p>
       <div class="button-group">
-        <button class="btn btn-primary" onclick="showSection('about')">About Me</button>
-        <button class="btn btn-outline" onclick="showSection('projects')">View Projects</button>
-        <a href="path-to-your-cv.pdf" download="Anthony_Espinosa_CV" class="btn btn-download">
+        <button class="btn btn-primary" onclick="showSection('projects')">View Projects</button>
+        <button class="btn btn-outline" onclick="showSection('about')">About Me</button>
+        <a href="#" class="btn btn-download" title="Add your PDF file to your repo and link it here">
           📄 Download CV
         </a>
       </div>
@@ -132,9 +128,9 @@
 
     <section id="about" class="content-section">
       <h2>About Me</h2>
-      <p>I am a passionate IT professional dedicated to full-stack development and UI/UX design. I believe technology should be as beautiful as it is functional.</p>
-      <p>Currently pursuing advanced studies in Information Technology, focusing on modern web frameworks and data systems.</p>
-      <button class="btn btn-primary" onclick="showSection('skills')">Check My Skills</button>
+      <p>I focus on full-stack development and UI/UX design. My philosophy is that code should be efficient and the interface should be intuitive.</p>
+      <p>Currently studying Information Technology with an emphasis on modern web frameworks and logic systems.</p>
+      <button class="btn btn-primary" onclick="showSection('skills')">My Technical Stack</button>
     </section>
 
     <section id="skills" class="content-section">
@@ -142,39 +138,41 @@
       <div class="card-grid">
         <div class="card">
           <h3>Languages</h3>
-          <p>HTML5, CSS3, JavaScript (ES6+), Java</p>
+          <p>HTML5, CSS3, JavaScript, Java</p>
         </div>
         <div class="card">
-          <h3>Design</h3>
-          <p>Figma, Adobe XD, UI/UX Principles</p>
-        </div>
-        <div class="card">
-          <h3>Development</h3>
-          <p>Responsive Design, Git, Logic Engine Design</p>
-        </div>
-        <div class="card">
-          <h3>Frameworks</h3>
-          <p>Learning React, Node.js</p>
+          <h3>Tools & Design</h3>
+          <p>Figma, Git, Responsive Design</p>
         </div>
       </div>
       <br>
-      <button class="btn btn-primary" onclick="showSection('certificates')">View Certificates</button>
+      <button class="btn btn-primary" onclick="showSection('projects')">Explore Projects</button>
+    </section>
+
+    <section id="projects" class="content-section">
+      <h2>Featured Projects</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Jersey Layout Engine</h3>
+          <p>Creative sports apparel configuration and design logic.</p>
+        </div>
+        <div class="card">
+          <h3>Logic Workflow Tool</h3>
+          <p>JavaScript-based data handling for complex web forms.</p>
+        </div>
+      </div>
     </section>
 
     <section id="certificates" class="content-section">
-      <h2>Professional Training</h2>
+      <h2>Certifications</h2>
       <div class="card">
-        <h3>Verified IT Specialist Certification</h3>
-        <p>Issued by Professional Training Institute</p>
-        <small>Date: 2025</small>
+        <h3>Verified IT Specialist</h3>
+        <p>Issued by Professional Training Institute (2025)</p>
       </div>
-      <br>
-      <button class="btn btn-primary" onclick="showSection('contact')">Get In Touch</button>
     </section>
 
     <section id="contact" class="content-section">
       <h2>Let's Connect</h2>
-      <p>I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
       <div class="card">
         <p><strong>Email:</strong> espinosaanthony50@gmail.com</p>
         <p><strong>Location:</strong> Philippines</p>
@@ -187,93 +185,39 @@
   </main>
 
   <div class="chatbot-container">
-    <div class="chat-header">ASSISTANT // ONLINE</div>
+    <div class="chat-header">System Assistant</div>
     <div class="chat-box" id="chatBox">
-      <div class="msg bot-msg">Hello! I'm Anthony's assistant. Ask me about his skills, background, or how to contact him.</div>
+      <div class="msg bot-msg">How can I help you today? Ask me about my skills or how to reach me.</div>
     </div>
     <div class="chat-input-area">
-      <input type="text" id="chatInput" placeholder="Ask a question...">
+      <input type="text" id="chatInput" placeholder="Type here...">
       <button id="sendBtn">➤</button>
     </div>
   </div>
 
   <footer>
-    &copy; 2026 Anthony Espinosa. Built with Precision.
+    &copy; 2026 Anthony Espinosa // Built for GitHub Pages.
   </footer>
 
   <script>
-    // 1. SECTION NAVIGATION LOGIC
     function showSection(id) {
-      // Hide all
-      document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.remove('active');
-      });
-      // Show Target
+      document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       
-      // Update Nav active state
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if(link.innerText.toLowerCase() === id.toLowerCase()) {
-          link.classList.add('active');
-        }
+        if(link.innerText.toLowerCase() === id.toLowerCase()) link.classList.add('active');
       });
-
-      // Scroll to top of section
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 2. CONTEXT-AWARE AI CHATBOT LOGIC
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
-    const chatBox = document.getElementById('chatBox');
-
     const portfolioData = {
-      skills: "Anthony knows HTML, CSS, JavaScript, and Java. He also uses Figma for UI/UX design.",
-      contact: "You can email him at espinosaanthony50@gmail.com or find him on Instagram (@toni_2high).",
-      about: "Anthony is an IT Student and Digital Architect who focuses on full-stack development and elegant web solutions.",
-      certificates: "He holds a Verified IT Specialist Certification from 2025.",
-      location: "He is based in the Philippines."
+      skills: "Anthony is proficient in HTML, CSS, JavaScript, and Java. He uses Figma for design work.",
+      contact: "Reach him at espinosaanthony50@gmail.com or via Instagram/Facebook.",
+      projects: "His projects include a Jersey Layout engine and Logic Workflow tools.",
+      bio: "Anthony is an IT Student and Digital Architect based in the Philippines."
     };
 
     function handleChat() {
-      const query = chatInput.value.toLowerCase().trim();
-      if (!query) return;
-
-      // Display User Message
-      appendMessage(chatInput.value, 'user-msg');
-      chatInput.value = '';
-
-      // Determine Bot Response
-      setTimeout(() => {
-        let response = "I'm sorry, I don't have that specific information. Try asking about his skills, contact info, or background.";
-
-        if (query.includes("skill") || query.includes("language") || query.includes("stack")) {
-          response = portfolioData.skills;
-        } else if (query.includes("contact") || query.includes("email") || query.includes("facebook")) {
-          response = portfolioData.contact;
-        } else if (query.includes("who") || query.includes("about") || query.includes("background")) {
-          response = portfolioData.about;
-        } else if (query.includes("cert") || query.includes("training")) {
-          response = portfolioData.certificates;
-        } else if (query.includes("hi") || query.includes("hello")) {
-          response = "Hello! How can I help you learn more about Anthony today?";
-        }
-
-        appendMessage(response, 'bot-msg');
-      }, 500);
-    }
-
-    function appendMessage(text, className) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `msg ${className}`;
-      msgDiv.innerText = text;
-      chatBox.appendChild(msgDiv);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    sendBtn.addEventListener('click', handleChat);
-    chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
-  </script>
-</body>
-</html>
+      const input = document.getElementById('chatInput');
+      const box
