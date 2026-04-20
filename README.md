@@ -191,7 +191,7 @@
     </div>
     <div class="chat-input-area">
       <input type="text" id="chatInput" placeholder="Type here...">
-      <button id="sendBtn">➤</button>
+      <button id="sendBtn" onclick="handleChat()">➤</button>
     </div>
   </div>
 
@@ -220,4 +220,42 @@
 
     function handleChat() {
       const input = document.getElementById('chatInput');
-      const box
+      const box = document.getElementById('chatBox');
+      const userMessage = input.value.trim();
+      
+      if (!userMessage) return;
+      
+      // Add user message to chat
+      const userMsg = document.createElement('div');
+      userMsg.className = 'msg user-msg';
+      userMsg.textContent = userMessage;
+      box.appendChild(userMsg);
+      
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+      
+      // Simple bot response logic
+      let botResponse = "I'm not sure about that. Ask me about skills, projects, or how to contact Anthony.";
+      
+      const lowerMessage = userMessage.toLowerCase();
+      if (lowerMessage.includes('skill')) botResponse = portfolioData.skills;
+      else if (lowerMessage.includes('contact') || lowerMessage.includes('email')) botResponse = portfolioData.contact;
+      else if (lowerMessage.includes('project')) botResponse = portfolioData.projects;
+      else if (lowerMessage.includes('who') || lowerMessage.includes('bio')) botResponse = portfolioData.bio;
+      
+      // Add bot response
+      const botMsg = document.createElement('div');
+      botMsg.className = 'msg bot-msg';
+      botMsg.textContent = botResponse;
+      box.appendChild(botMsg);
+      
+      box.scrollTop = box.scrollHeight;
+    }
+    
+    // Allow Enter key to send messages
+    document.getElementById('chatInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleChat();
+    });
+  </script>
+</body>
+</html>
