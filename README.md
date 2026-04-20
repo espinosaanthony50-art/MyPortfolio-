@@ -5,200 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anthony Espinosa | Portfolio</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio of Anthony Espinosa, an IT Student & Digital Architect focusing on full-stack development.">
+  <meta property="og:title" content="Anthony Espinosa | Portfolio">
+  <meta property="og:description" content="IT Student & Digital Architect - View my featured work and technical stack.">
+  <meta property="og:image" content="assets/A.jpg"> 
+  <meta name="theme-color" content="#10b981">
 
-  <style>
-    /* PASTE THE CSS CODE HERE */
-    :root {
-      --primary: #10b981;
-      --bg: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --text: #f8fafc;
-    }
-    /* ... include the rest of the CSS from the previous message ... */
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <script>
-    // PASTE THE JAVASCRIPT CODE HERE
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(sec => sec.classList.remove('active'));
-      // ... include the rest of the JS logic ...
-    }
-  </script>
+  <div class="blob" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+
+  <header>
+    <h1>Anthony Espinosa</h1>
+    <p>IT Student & Digital Architect</p>
+  </header>
+
+  <nav id="main-nav">
+    <a href="#home" class="nav-link active" onclick="showSection('home'); return false;">Home</a>
+    <a href="#about" class="nav-link" onclick="showSection('about'); return false;">About</a>
+    <a href="#projects" class="nav-link" onclick="showSection('projects'); return false;">Projects</a>
+    <a href="#skills" class="nav-link" onclick="showSection('skills'); return false;">Skills</a>
+    <a href="#contact" class="nav-link" onclick="showSection('contact'); return false;">Contact</a>
+  </nav>
+
+  <main>
+    <section id="home" class="content-section active">
+      <h2>Welcome</h2>
+      <p>I build elegant solutions for the modern web. Aspiring IT specialist focused on bridging the gap between design and functionality.</p>
+      <a href="#projects" class="explore-button" onclick="showSection('projects'); return false;">View My Work</a>
+    </section>
+
+    <section id="about" class="content-section">
+      <h2>Biography</h2>
+      <p>Passionate about the intersection of technology and human experience. Currently pursuing my IT degree with a focus on full-stack development.</p>
+      <div class="img-container">
+          <img src="https://via.placeholder.com/600x300/0f172a/10b981?text=Future+Tech+Vision" alt="Abstract digital architecture visualization" loading="lazy">
+      </div>
+    </section>
+
+    <section id="projects" class="content-section">
+      <h2>Featured Work</h2>
+      <div class="grid">
+        <article class="item-card">
+          <img src="assets/A.jpg" alt="Preview of Jersey Layout project" class="project-thumb" loading="lazy">
+          <h3>Jersey Layout</h3>
+          <p>Creative sports apparel design and layout configuration.</p>
+          <a href="assets/A.jpg" target="_blank" rel="noopener" class="file-link">View Design</a>
+        </article>
+
+        <article class="item-card">
+          <img src="assets/project2.png" alt="Logic Engine workflow diagram" class="project-thumb" loading="lazy">
+          <h3>Logic Engine</h3>
+          <p>Custom JavaScript tools to handle complex data workflows.</p>
+          <a href="assets/logic-engine.zip" download class="file-link">Get Files</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="content-section">
+      <h2>Technical Stack</h2>
+      <div class="grid">
+        <div class="item-card">
+          <h3>Languages</h3>
+          <p>HTML, Java, JavaScript</p>
+        </div>
+        <div class="item-card">
+          <h3>Design</h3>
+          <p>Figma, UI/UX Design</p>
+        </div>
+        <div class="item-card">
+          <img src="assets/B.jpg" alt="Professional Certification Badge" class="project-thumb" style="height:120px; object-fit: contain;">
+          <p>Verified Professional Training</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section">
+      <h2>Let's Connect</h2>
+      <div class="contact-links">
+        <a href="mailto:espinosaanthony50@gmail.com">📧 Email Me</a>
+        <a href="https://www.facebook.com/share/1AyUQ6gKmh/" target="_blank" rel="noopener">👤 Facebook Profile</a>
+        <a href="https://www.instagram.com/toni_2high?igsh=MXFxcXVwc2Y5bXRpeQ==" target="_blank" rel="noopener">📸 Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <aside class="chatbot" aria-label="Support Chat">
+    <div class="chat-header">SYSTEM ASSISTANT</div>
+    <div class="chat-body" id="chatBody">
+      <p><span class="bot-label">[Bot]:</span> Online. How can I help?</p>
+    </div>
+    <input type="text" id="chatInput" placeholder="Enter query..." onkeypress="handleChat(event)">
+  </aside>
+
+  <footer>
+    <p>&copy; 2026 Anthony Espinosa // Built for the Emerald Web.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
-:root {
-  --primary: #10b981; /* Emerald */
-  --bg-dark: #0f172a;
-  --card-bg: rgba(30, 41, 59, 0.7);
-  --text-light: #f1f5f9;
-  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Space Grotesk', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* --- Animated Background Blobs --- */
-.blob {
-  position: fixed;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
-  z-index: -1;
-  filter: blur(50px);
-  animation: move 20s infinite alternate;
-}
-
-.blob-2 {
-  right: -100px;
-  bottom: -100px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-}
-
-@keyframes move {
-  from { transform: translate(0, 0); }
-  to { transform: translate(100px, 100px); }
-}
-
-/* --- Navigation --- */
-#main-nav {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(10px);
-  padding: 1rem;
-  z-index: 100;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-#main-nav a {
-  color: var(--text-light);
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 500;
-  transition: var(--transition);
-  opacity: 0.7;
-}
-
-#main-nav a:hover, #main-nav a.active {
-  color: var(--primary);
-  opacity: 1;
-}
-
-/* --- Sections Visibility --- */
-section {
-  display: none; /* Hidden by default for the JS logic */
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 2rem;
-  animation: fadeIn 0.6s ease-out;
-}
-
-section.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Grid & Cards --- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.item-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 1.5rem;
-  backdrop-filter: blur(5px);
-  transition: var(--transition);
-}
-
-.item-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary);
-  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
-}
-
-.project-thumb {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-/* --- Buttons --- */
-.explore-button, .file-link {
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-top: 1rem;
-  font-weight: 700;
-  transition: var(--transition);
-}
-
-.explore-button:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 15px var(--primary);
-}
-
-/* --- Chatbot UI --- */
-.chatbot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  background: #1e293b;
-  border: 1px solid var(--primary);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-}
-
-.chat-header {
-  background: var(--primary);
-  padding: 10px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.chat-body {
-  height: 200px;
-  padding: 10px;
-  overflow-y: auto;
-  font-size: 0.9rem;
-}
-
-#chatInput {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #334155;
-  color: white;
-  outline: none;
-}
-
