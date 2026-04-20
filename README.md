@@ -3,216 +3,277 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anthony Espinosa | Portfolio</title>
+  <title>Anthony Espinosa | IT Professional Portfolio</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* --- CSS DESIGN STACK --- */
+    /* --- MODERN UI SYSTEM --- */
     :root {
-      --primary: #10b981; /* Emerald */
-      --bg-dark: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --text-light: #f1f5f9;
-      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --bg: #ffffff;
+      --text: #111827;
+      --secondary-text: #4b5563;
+      --accent: #000000;
+      --gray-light: #f3f4f6;
+      --gray-mid: #e5e7eb;
+      --border: #d1d5db;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
     }
-
-    /* Background Animation */
-    .blob {
-      position: fixed;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-      z-index: -1; filter: blur(60px);
-      animation: move 20s infinite alternate;
-    }
-    .blob-2 { right: -100px; bottom: -100px; opacity: 0.5; }
-    @keyframes move { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
-
-    header { text-align: center; padding: 3rem 1rem; }
-    header h1 { font-size: 2.5rem; color: var(--primary); letter-spacing: -1px; }
 
     /* Navigation */
-    #main-nav {
-      position: sticky; top: 0;
-      display: flex; justify-content: center;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(12px);
-      padding: 1rem; z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-mid);
+      z-index: 1000;
+      display: flex; justify-content: center; padding: 1.2rem;
     }
     .nav-link {
-      color: var(--text-light); text-decoration: none;
-      margin: 0 15px; font-weight: 500; opacity: 0.6;
-      transition: var(--transition);
+      color: var(--secondary-text); text-decoration: none;
+      margin: 0 1rem; font-weight: 500; font-size: 0.9rem;
+      transition: var(--transition); cursor: pointer;
     }
-    .nav-link:hover, .nav-link.active { opacity: 1; color: var(--primary); }
+    .nav-link:hover, .nav-link.active { color: var(--accent); font-weight: 700; }
 
-    /* Logic: Hiding/Showing Sections */
+    /* Layout Components */
+    main { max-width: 800px; margin: 100px auto 60px; padding: 0 20px; }
+
     .content-section {
-      display: none;
-      max-width: 900px; margin: 2rem auto;
-      padding: 2rem; animation: fadeInUp 0.5s ease forwards;
+      display: none; animation: fadeIn 0.4s ease-out;
     }
     .content-section.active { display: block; }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Cards & Grids */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-    .item-card {
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 12px; padding: 1.5rem; backdrop-filter: blur(10px);
-      transition: var(--transition);
-    }
-    .item-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+    /* UI Elements */
+    h1 { font-size: 3rem; font-weight: 700; letter-spacing: -2px; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; border-bottom: 2px solid var(--accent); display: inline-block; margin-bottom: 1.5rem; }
+    p { color: var(--secondary-text); margin-bottom: 1.5rem; font-size: 1.1rem; }
+
+    .button-group { display: flex; gap: 10px; flex-wrap: wrap; }
     
-    .project-thumb { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
-
-    /* Buttons */
-    .explore-button, .file-link {
-      display: inline-block; background: var(--primary); color: white;
-      padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none;
-      margin-top: 1rem; transition: 0.3s;
+    .btn {
+      padding: 12px 24px; border-radius: 6px; font-weight: 600; 
+      cursor: pointer; transition: var(--transition); text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center;
     }
+    .btn-primary { background: var(--accent); color: white; border: none; }
+    .btn-primary:hover { background: #333; transform: translateY(-2px); }
+    
+    .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+    .btn-outline:hover { background: var(--gray-light); }
 
-    /* Chatbot */
-    .chatbot {
-      position: fixed; bottom: 20px; right: 20px; width: 280px;
-      background: #1e293b; border: 1px solid var(--primary);
-      border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    .btn-download { background: var(--gray-light); color: var(--accent); border: 1px solid var(--border); }
+
+    /* Cards */
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
+    
+    .card {
+      background: var(--gray-light); padding: 20px; border-radius: 8px;
+      border: 1px solid var(--gray-mid);
     }
-    .chat-header { background: var(--primary); padding: 8px 12px; font-weight: bold; font-size: 0.75rem; }
-    .chat-body { height: 150px; padding: 10px; overflow-y: auto; font-size: 0.85rem; background: #0f172a; }
-    #chatInput { width: 100%; border: none; padding: 10px; background: #334155; color: white; }
+    .card h3 { margin-bottom: 8px; font-size: 1rem; }
 
-    footer { text-align: center; padding: 2rem; opacity: 0.5; font-size: 0.8rem; }
+    /* Chatbot Interface */
+    .chatbot-container {
+      position: fixed; bottom: 25px; right: 25px; width: 320px;
+      background: white; border-radius: 12px; border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; z-index: 2000;
+    }
+    .chat-header { background: var(--accent); color: white; padding: 12px; font-weight: 600; font-size: 0.8rem; }
+    .chat-box { height: 250px; padding: 15px; overflow-y: auto; background: white; font-size: 0.85rem; }
+    .chat-input-area { display: flex; border-top: 1px solid var(--gray-mid); }
+    #chatInput { flex: 1; padding: 12px; border: none; outline: none; }
+    #sendBtn { padding: 12px; background: white; border: none; cursor: pointer; font-weight: bold; }
+
+    .msg { margin-bottom: 10px; border-radius: 4px; padding: 8px; max-width: 85%; }
+    .bot-msg { background: var(--gray-light); color: var(--text); align-self: flex-start; }
+    .user-msg { background: #333; color: white; margin-left: auto; }
+
+    footer { text-align: center; padding: 40px; border-top: 1px solid var(--gray-mid); color: var(--secondary-text); font-size: 0.8rem; }
   </style>
 </head>
 <body>
 
-  <div class="blob" aria-hidden="true"></div>
-  <div class="blob blob-2" aria-hidden="true"></div>
-
-  <header>
-    <h1>Anthony Espinosa</h1>
-    <p>IT Student & Digital Architect</p>
-  </header>
-
-  <nav id="main-nav">
-    <a href="#home" class="nav-link active" onclick="showSection('home'); return false;">Home</a>
-    <a href="#about" class="nav-link" onclick="showSection('about'); return false;">About</a>
-    <a href="#projects" class="nav-link" onclick="showSection('projects'); return false;">Projects</a>
-    <a href="#skills" class="nav-link" onclick="showSection('skills'); return false;">Skills</a>
-    <a href="#contact" class="nav-link" onclick="showSection('contact'); return false;">Contact</a>
+  <nav>
+    <div class="nav-link active" onclick="showSection('home')">Home</div>
+    <div class="nav-link" onclick="showSection('about')">About</div>
+    <div class="nav-link" onclick="showSection('skills')">Skills</div>
+    <div class="nav-link" onclick="showSection('certificates')">Certificates</div>
+    <div class="nav-link" onclick="showSection('contact')">Contact</div>
   </nav>
 
   <main>
     <section id="home" class="content-section active">
-      <h2>Welcome</h2>
-      <p>I build elegant solutions for the modern web. Aspiring IT specialist focused on bridging the gap between design and functionality.</p>
-      <a href="#projects" class="explore-button" onclick="showSection('projects'); return false;">View My Work</a>
+      <h1>Anthony Espinosa</h1>
+      <p>IT Student & Digital Architect based in the Philippines. I specialize in bridging technical logic with elegant user interfaces.</p>
+      <div class="button-group">
+        <button class="btn btn-primary" onclick="showSection('about')">About Me</button>
+        <button class="btn btn-outline" onclick="showSection('projects')">View Projects</button>
+        <a href="path-to-your-cv.pdf" download="Anthony_Espinosa_CV" class="btn btn-download">
+          📄 Download CV
+        </a>
+      </div>
     </section>
 
     <section id="about" class="content-section">
-      <h2>Biography</h2>
-      <p>Passionate about technology and human experience. Currently pursuing my IT degree with a focus on full-stack development.</p>
-    </section>
-
-    <section id="projects" class="content-section">
-      <h2>Featured Work</h2>
-      <div class="grid">
-        <article class="item-card">
-          <img src="assets/A.jpg" alt="Jersey Design" class="project-thumb">
-          <h3>Jersey Layout</h3>
-          <p>Creative sports apparel design and layout configuration.</p>
-        </article>
-        <article class="item-card">
-          <h3>Logic Engine</h3>
-          <p>Custom JavaScript tools for complex data workflows.</p>
-        </article>
-      </div>
+      <h2>About Me</h2>
+      <p>I am a passionate IT professional dedicated to full-stack development and UI/UX design. I believe technology should be as beautiful as it is functional.</p>
+      <p>Currently pursuing advanced studies in Information Technology, focusing on modern web frameworks and data systems.</p>
+      <button class="btn btn-primary" onclick="showSection('skills')">Check My Skills</button>
     </section>
 
     <section id="skills" class="content-section">
       <h2>Technical Stack</h2>
-      <div class="grid">
-        <div class="item-card"><h3>Languages</h3><p>HTML, Java, JavaScript</p></div>
-        <div class="item-card"><h3>Design</h3><p>Figma, UI/UX Design</p></div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Languages</h3>
+          <p>HTML5, CSS3, JavaScript (ES6+), Java</p>
+        </div>
+        <div class="card">
+          <h3>Design</h3>
+          <p>Figma, Adobe XD, UI/UX Principles</p>
+        </div>
+        <div class="card">
+          <h3>Development</h3>
+          <p>Responsive Design, Git, Logic Engine Design</p>
+        </div>
+        <div class="card">
+          <h3>Frameworks</h3>
+          <p>Learning React, Node.js</p>
+        </div>
       </div>
+      <br>
+      <button class="btn btn-primary" onclick="showSection('certificates')">View Certificates</button>
+    </section>
+
+    <section id="certificates" class="content-section">
+      <h2>Professional Training</h2>
+      <div class="card">
+        <h3>Verified IT Specialist Certification</h3>
+        <p>Issued by Professional Training Institute</p>
+        <small>Date: 2025</small>
+      </div>
+      <br>
+      <button class="btn btn-primary" onclick="showSection('contact')">Get In Touch</button>
     </section>
 
     <section id="contact" class="content-section">
       <h2>Let's Connect</h2>
-      <div class="item-card">
-        <p>📧 <a href="mailto:espinosaanthony50@gmail.com" style="color:var(--primary)">Email Me</a></p>
-        <p>🔗 <a href="https://www.facebook.com/share/1AyUQ6gKmh/" target="_blank" style="color:var(--primary)">Facebook</a></p>
+      <p>I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+      <div class="card">
+        <p><strong>Email:</strong> espinosaanthony50@gmail.com</p>
+        <p><strong>Location:</strong> Philippines</p>
+        <div class="button-group" style="margin-top:20px;">
+          <a href="https://www.facebook.com/share/1AyUQ6gKmh/" target="_blank" class="btn btn-outline">Facebook</a>
+          <a href="https://www.instagram.com/toni_2high?igsh=MXFxcXVwc2Y5bXRpeQ==" target="_blank" class="btn btn-outline">Instagram</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <aside class="chatbot">
-    <div class="chat-header">SYSTEM ASSISTANT</div>
-    <div class="chat-body" id="chatBody">
-      <p><span style="color:var(--primary)">[Bot]:</span> Online. How can I help?</p>
+  <div class="chatbot-container">
+    <div class="chat-header">ASSISTANT // ONLINE</div>
+    <div class="chat-box" id="chatBox">
+      <div class="msg bot-msg">Hello! I'm Anthony's assistant. Ask me about his skills, background, or how to contact him.</div>
     </div>
-    <input type="text" id="chatInput" placeholder="Ask a question..." onkeypress="handleChat(event)">
-  </aside>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Ask a question...">
+      <button id="sendBtn">➤</button>
+    </div>
+  </div>
 
   <footer>
-    <p>&copy; 2026 Anthony Espinosa // Emerald Web Architecture</p>
+    &copy; 2026 Anthony Espinosa. Built with Precision.
   </footer>
 
   <script>
-    /* --- JAVASCRIPT LOGIC --- */
-    function showSection(sectionId) {
-      // Hide all sections
-      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-      // Show clicked section
-      document.getElementById(sectionId).classList.add('active');
+    // 1. SECTION NAVIGATION LOGIC
+    function showSection(id) {
+      // Hide all
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      // Show Target
+      document.getElementById(id).classList.add('active');
       
       // Update Nav active state
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
-        if(link.getAttribute('href') === '#' + sectionId) link.classList.add('active');
+        if(link.innerText.toLowerCase() === id.toLowerCase()) {
+          link.classList.add('active');
+        }
       });
 
+      // Scroll to top of section
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function handleChat(e) {
-      if (e.key === 'Enter') {
-        const input = document.getElementById('chatInput');
-        const body = document.getElementById('chatBody');
-        if (input.value.trim()) {
-          body.innerHTML += `<p style="opacity:0.6">[You]: ${input.value}</p>`;
-          
-          // Simple Response Logic
-          setTimeout(() => {
-            let resp = "Command recognized. Redirecting to " + input.value + "...";
-            if(input.value.toLowerCase().includes("help")) resp = "Try clicking the 'Skills' tab!";
-            body.innerHTML += `<p><span style="color:#10b981">[Bot]:</span> ${resp}</p>`;
-            body.scrollTop = body.scrollHeight;
-          }, 600);
-          
-          input.value = "";
+    // 2. CONTEXT-AWARE AI CHATBOT LOGIC
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatBox = document.getElementById('chatBox');
+
+    const portfolioData = {
+      skills: "Anthony knows HTML, CSS, JavaScript, and Java. He also uses Figma for UI/UX design.",
+      contact: "You can email him at espinosaanthony50@gmail.com or find him on Instagram (@toni_2high).",
+      about: "Anthony is an IT Student and Digital Architect who focuses on full-stack development and elegant web solutions.",
+      certificates: "He holds a Verified IT Specialist Certification from 2025.",
+      location: "He is based in the Philippines."
+    };
+
+    function handleChat() {
+      const query = chatInput.value.toLowerCase().trim();
+      if (!query) return;
+
+      // Display User Message
+      appendMessage(chatInput.value, 'user-msg');
+      chatInput.value = '';
+
+      // Determine Bot Response
+      setTimeout(() => {
+        let response = "I'm sorry, I don't have that specific information. Try asking about his skills, contact info, or background.";
+
+        if (query.includes("skill") || query.includes("language") || query.includes("stack")) {
+          response = portfolioData.skills;
+        } else if (query.includes("contact") || query.includes("email") || query.includes("facebook")) {
+          response = portfolioData.contact;
+        } else if (query.includes("who") || query.includes("about") || query.includes("background")) {
+          response = portfolioData.about;
+        } else if (query.includes("cert") || query.includes("training")) {
+          response = portfolioData.certificates;
+        } else if (query.includes("hi") || query.includes("hello")) {
+          response = "Hello! How can I help you learn more about Anthony today?";
         }
-      }
+
+        appendMessage(response, 'bot-msg');
+      }, 500);
     }
+
+    function appendMessage(text, className) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `msg ${className}`;
+      msgDiv.innerText = text;
+      chatBox.appendChild(msgDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', handleChat);
+    chatInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleChat(); });
   </script>
 </body>
 </html>
