@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anthony Espinosa | IT Professional Portfolio</title>
+
+<title>"Anthony Espinosa | IT Professional Portfolio"</title>
   
-  <meta name="description" content="Portfolio of Anthony Espinosa, an IT Student & Developer based in the Philippines.">
+  <meta name="description" content="Portfolio of Anthony Espinosa, an IT Student">
   <meta property="og:title" content="Anthony Espinosa | IT Portfolio">
   <meta property="og:description" content="Bridging technical logic with professional minimalist design.">
   <meta property="og:type" content="website">
